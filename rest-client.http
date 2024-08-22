@@ -1,0 +1,22 @@
+### fetch all songs
+GET http://localhost:3003/songs
+
+### fetch 1 song
+GET http://localhost:3003/songs/1
+
+### create song
+POST http://localhost:3003/songs
+Content-Type: application/json
+
+{
+  "title": "First song",
+  "artists": ["John"],
+  "releasedDate": "2024-08-10",
+  "duration": "03:32"
+}
+
+### update one song
+PATCH http://localhost:3003/songs/1
+
+### DELETE one song
+DELETE http://localhost:3003/songs/1
