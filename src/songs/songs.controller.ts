@@ -8,14 +8,15 @@ import {
   Put,
 } from '@nestjs/common';
 import { SongsService } from './songs.service';
+import { CreateSongDTO } from './dto/create-song-dto';
 
 @Controller('songs')
 export class SongsController {
   constructor(private songService: SongsService) {}
   @Post()
-  create() {
+  create(@Body() createSongDTO: CreateSongDTO) {
     // Persist the song to the Database
-    return this.songService.create('song 1');
+    return this.songService.create(createSongDTO);
   }
 
   @Get()
