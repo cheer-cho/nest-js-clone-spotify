@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { Connection } from 'src/common/constants/connection';
 
 @Injectable()
 export class SongsService {
@@ -6,6 +7,10 @@ export class SongsService {
   // local array
 
   private readonly songs = [];
+
+  constructor(@Inject('CONNECTION') connection: Connection) {
+    console.log('connection string', connection.CONNECTION_STRING);
+  }
 
   create(song) {
     this.songs.push(song);
