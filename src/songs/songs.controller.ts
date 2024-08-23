@@ -5,6 +5,8 @@ import {
   Get,
   HttpException,
   HttpStatus,
+  Param,
+  ParseIntPipe,
   Patch,
   Post,
   Put,
@@ -41,8 +43,14 @@ export class SongsController {
   }
 
   @Get(':id')
-  findOne() {
-    return 'find song by id';
+  findOne(
+    @Param(
+      'id',
+      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
+    id: number,
+  ) {
+    return `song id ${typeof id}`;
   }
 
   @Put(':id')
